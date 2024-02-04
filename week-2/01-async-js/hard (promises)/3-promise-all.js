@@ -25,12 +25,17 @@ function wait3(t) {
   return p;
 }
 
-function calculateTime(t1, t2, t3) {
+async function calculateTime(t1, t2, t3) {
   const start = Date.now();
-  return Promise.all([wait1(t1), wait2(t2), wait3(t3)]).then(function () {
-    const end = Date.now();
-    return (end - start);
-  })
+  await Promise.all([wait1(t1), wait2(t2), wait3(t3)])
+  const end = Date.now();
+  return (end - start);
 }
+
+// function calculateTime(t1, t2, t3) {
+//   const start = Date.now();
+//   return Promise.all([wait1(t1), wait2(t2), wait3(t3)]).then(function () {
+//     return Date.now() - start;
+//   })
 
 module.exports = calculateTime;
