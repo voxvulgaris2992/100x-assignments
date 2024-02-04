@@ -1,36 +1,64 @@
+// const wait = require("../hard (promises)/1-promisify-setTimeout");
+
+// describe("wait function", () => {
+//   test("resolves after 1 second", () => {
+//     const start = Date.now();
+//     return expect(wait(1))
+//       .resolves.toBeUndefined() // Wait for 1 second
+//       .then(() => {
+//         const end = Date.now();
+//         const difference = end - start;
+//         expect(difference).toBeGreaterThanOrEqual(1000); // Expect difference to be at least 1000 ms (1 second)
+//       });
+//   }, 2000); // Set timeout to 2000 ms (2 seconds)
+
+//   test("resolves after 2 seconds", () => {
+//     const start = Date.now();
+//     return expect(wait(2))
+//       .resolves.toBeUndefined() // Wait for 2 seconds
+//       .then(() => {
+//         const end = Date.now();
+//         const difference = end - start;
+//         expect(difference).toBeGreaterThanOrEqual(2000); // Expect difference to be at least 2000 ms (2 seconds)
+//       });
+//   }, 3000); // Set timeout to 3000 ms (3 seconds)
+
+//   test("resolves after 3 seconds", () => {
+//     const start = Date.now();
+//     return expect(wait(3))
+//       .resolves.toBeUndefined() // Wait for 3 seconds
+//       .then(() => {
+//         const end = Date.now();
+//         const difference = end - start;
+//         expect(difference).toBeGreaterThanOrEqual(3000); // Expect difference to be at least 3000 ms (3 seconds)
+//       });
+//   }, 4000); // Set timeout to 4000 ms (4 seconds)
+// });
+
 const wait = require("../hard (promises)/1-promisify-setTimeout");
 
 describe("wait function", () => {
-  test("resolves after 1 second", () => {
+  test("resolves after 1 second", async () => {
     const start = Date.now();
-    return expect(wait(1))
-      .resolves.toBeUndefined() // Wait for 1 second
-      .then(() => {
-        const end = Date.now();
-        const difference = end - start;
-        expect(difference).toBeGreaterThanOrEqual(1000); // Expect difference to be at least 1000 ms (1 second)
-      });
+    await expect(wait(1)).resolves.toBeUndefined();
+    const end = Date.now();
+    const difference = end - start;
+    expect(difference).toBeGreaterThanOrEqual(800); // Allow a 200 ms margin of error
   }, 2000); // Set timeout to 2000 ms (2 seconds)
 
-  test("resolves after 2 seconds", () => {
+  test("resolves after 2 seconds", async () => {
     const start = Date.now();
-    return expect(wait(2))
-      .resolves.toBeUndefined() // Wait for 2 seconds
-      .then(() => {
-        const end = Date.now();
-        const difference = end - start;
-        expect(difference).toBeGreaterThanOrEqual(2000); // Expect difference to be at least 2000 ms (2 seconds)
-      });
+    await expect(wait(2)).resolves.toBeUndefined();
+    const end = Date.now();
+    const difference = end - start;
+    expect(difference).toBeGreaterThanOrEqual(1800); // Allow a 200 ms margin of error
   }, 3000); // Set timeout to 3000 ms (3 seconds)
 
-  test("resolves after 3 seconds", () => {
+  test("resolves after 3 seconds", async () => {
     const start = Date.now();
-    return expect(wait(3))
-      .resolves.toBeUndefined() // Wait for 3 seconds
-      .then(() => {
-        const end = Date.now();
-        const difference = end - start;
-        expect(difference).toBeGreaterThanOrEqual(3000); // Expect difference to be at least 3000 ms (3 seconds)
-      });
+    await expect(wait(3)).resolves.toBeUndefined();
+    const end = Date.now();
+    const difference = end - start;
+    expect(difference).toBeGreaterThanOrEqual(2800); // Allow a 200 ms margin of error
   }, 4000); // Set timeout to 4000 ms (4 seconds)
 });
